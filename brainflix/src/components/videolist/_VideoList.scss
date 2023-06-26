@@ -1,0 +1,85 @@
+// _VideoList.scss
+$border-color: #AFAFAF;
+$background-color-light: #E1E1E1;
+$navbar-background-color: white;
+$search-background-color: #FAFAFA;
+$upload-background-color: #0095FF;
+$upload-color: white;
+$title-and-channel-color: #323232;
+$video-detail-border-color: #E1E1E1;
+@mixin medium-screen {
+    @media (min-width: rem($medium-screen)) and (max-width: rem($small-screen - 1)) {
+        @content;
+    }
+}
+
+@mixin small-screen {
+    @media (max-width: rem($small-screen)) {
+        @content;
+    }
+}
+
+@mixin desktop-screen {
+    @media (min-width: rem($desktop-screen)) {
+        @content;
+    }
+}
+
+.video-list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.875rem;
+    border-left: 1px solid $border-color;
+    padding-left: 1.25rem;
+
+    &__title {
+        font-size: 0.875rem;
+        color: $background-color-light;
+        margin-bottom: 1.25rem;
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 1279px) {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        padding-left: 1.5rem;
+    }
+
+    @media (max-width: 767px) {
+        width: 100%;  
+        padding: 0 1rem;  
+        margin-top: 1.25rem;
+        border-left: none;
+    }
+}
+
+.video__thumbnail {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 0.9375rem;
+    cursor: pointer;
+}
+
+.video__thumbnail img {
+    width: 120px;
+    height: 90px;
+    object-fit: cover;
+    margin-right: 0.9375rem;
+}
+
+.video__thumbnail-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    h2 {
+        font-size: 0.875rem;
+        font-weight: 700;
+        margin-bottom: 0.3125rem;
+    }
+
+    h3 {
+        font-size: 0.875rem;
+        font-weight: 300;
+    }
+}

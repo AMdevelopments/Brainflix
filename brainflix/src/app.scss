@@ -1,0 +1,52 @@
+// _App.scss
+@use './styles/partials/font' as *;
+
+body {
+    font-family: AvenirNext LT Pro;
+}
+// In app.scss
+
+.app {
+    width: 100%;
+}
+
+.app__content {
+    display: flex;
+    justify-content: space-between;
+    @media only screen and (min-width: 768px) and (max-width: 1279px) {
+        flex-direction: column; /* On tablet, stack them vertically */
+    }
+    @media (max-width: 767px) {
+        flex-direction: column; // Stack vertically on smaller screens
+      }
+}
+
+.app__main {
+    width: 70%; // Adjust as needed
+    padding-left: 24px;
+    margin-right: 16px; // Add right margin to create gap with the right border
+}
+
+
+.app__sidebar {
+    width: 30%; // Adjust as needed
+    padding-right: 24px;
+}
+
+@media (max-width: 767px) {
+    .app__main {
+        padding-left: 16px;
+    }
+
+    .app__sidebar {
+        padding-right: 16px;
+    }
+}
+
+
+
+
+
+
+
+

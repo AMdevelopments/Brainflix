@@ -1,0 +1,116 @@
+
+// _VideoDetail.scss
+$border-color: #AFAFAF;
+$background-color-light: #E1E1E1;
+$navbar-background-color: white;
+$search-background-color: #FAFAFA;
+$upload-background-color: #0095FF;
+$upload-color: white;
+$title-and-channel-color: #323232;
+$video-detail-border-color: #E1E1E1;
+@mixin medium-screen {
+    @media (min-width: rem($medium-screen)) and (max-width: rem($small-screen - 1)) {
+        @content;
+    }
+}
+
+@mixin small-screen {
+    @media (max-width: rem($small-screen)) {
+        @content;
+    }
+}
+
+@mixin desktop-screen {
+    @media (min-width: rem($desktop-screen)) {
+        @content;
+    }
+}
+
+
+
+.video-detail {
+    max-width: 900px;
+    margin: 0 auto;
+    
+    &__title {
+        font-size: 2rem;
+        margin-bottom: 0.3125rem;
+        color: $title-and-channel-color;
+    }
+
+    &__info {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        border-bottom: 4px solid $video-detail-border-color;
+
+        &__channel {
+            font-weight: bold;
+            color: $title-and-channel-color;
+        }
+
+        &__data {
+            display: flex;
+            align-items: center;
+
+            .icon-text {
+                display: flex;
+                align-items: center;
+                margin-left: 0.625rem;
+
+                .icon {
+                    width: 24px;
+                    height: 24px;
+                    margin-right: 0.3125rem;
+                }
+            }
+
+            @media only screen and (min-width: 768px) and (max-width: 1279px) {
+                width: 100%;
+            }
+        }
+    }
+
+    &__description {
+        margin-bottom: 1rem;
+    }
+
+    &__add-comment-icon {
+        display: block;
+        margin: 1.25rem auto;
+        border-bottom: 1px solid $video-detail-border-color;
+    }
+
+    hr {
+        border: none;
+        border-top: 1px solid $video-detail-border-color;
+        margin: 1.25rem 0;
+    }
+
+    // Media query for smaller screens
+    @media (max-width: 767px) {
+        width: 100%;  
+        padding: 0 1rem;  
+
+        &__info {
+            flex-direction: column;
+            align-items: flex-start;
+
+            &__data {
+                flex-direction: column;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+

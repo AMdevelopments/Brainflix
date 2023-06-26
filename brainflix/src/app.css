@@ -1,0 +1,54 @@
+@font-face {
+  font-family: AvenirNext LT Pro;
+  src: url("../../assets/Font/AvenirNextLTPro-Regular.otf") format("TrueType");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: AvenirNext LT Pro;
+  src: url("../../assets/Font/AvenirNextLTPro-Bold.otf") format("TrueType");
+  font-weight: 600;
+  font-style: normal;
+}
+body {
+  font-family: AvenirNext LT Pro;
+}
+
+.app {
+  width: 100%;
+}
+
+.app__content {
+  display: flex;
+  justify-content: space-between;
+}
+@media only screen and (min-width: 768px) and (max-width: 1279px) {
+  .app__content {
+    flex-direction: column; /* On tablet, stack them vertically */
+  }
+}
+@media (max-width: 767px) {
+  .app__content {
+    flex-direction: column;
+  }
+}
+
+.app__main {
+  width: 70%;
+  padding-left: 24px;
+  margin-right: 16px;
+}
+
+.app__sidebar {
+  width: 30%;
+  padding-right: 24px;
+}
+
+@media (max-width: 767px) {
+  .app__main {
+    padding-left: 16px;
+  }
+  .app__sidebar {
+    padding-right: 16px;
+  }
+}/*# sourceMappingURL=app.css.map */
