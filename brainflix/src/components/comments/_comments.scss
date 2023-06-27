@@ -19,6 +19,15 @@ $comment-button-color: white;
         margin-bottom: 1em;
     }
 
+    &__conversation {
+        font-size: 14px;
+        color: #AFAFAF;
+        margin-bottom: -10px;
+        margin-left: 70px;
+        align-self: flex-end;
+        font-weight: 300;
+    }
+
     .new-comment-section {
         display: flex;
         align-items: center;
@@ -42,12 +51,13 @@ $comment-button-color: white;
             align-items: center;
             padding: 1rem;
             border-radius: 4px;
-        }
 
-        &__bar-input {
-            flex-grow: 1;
-            border: none;
-            background-color: transparent;
+            &-input {
+                flex-grow: 1;
+                border: none;
+                background-color: transparent;
+                color: #323232;
+            }
         }
 
         &__bar-button {

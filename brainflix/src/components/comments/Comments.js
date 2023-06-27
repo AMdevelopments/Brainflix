@@ -8,6 +8,7 @@ const Comments = ({ comments }) => {
     return (
         <div className="comments">
             <h2 className="comments__title">{comments.length} Comments</h2>
+            <h3 className="comments__conversation">JOIN THE CONVERSATION</h3>
             <div className="new-comment-section">
                 <img className="new-comment-section__avatar" src={avatar} alt="User Avatar" />
                 <div className="new-comment-section__bar">
@@ -35,6 +36,7 @@ const Comments = ({ comments }) => {
 };
 
 export default Comments;
+
 
 
 

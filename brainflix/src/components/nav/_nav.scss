@@ -8,6 +8,11 @@ $upload-background-color: #0095FF;
 $upload-color: white;
 $title-and-channel-color: #323232;
 $video-detail-border-color: #E1E1E1;
+
+$medium-screen: 768px; // Define screen sizes as variables
+$small-screen: 767px;
+$desktop-screen: 1280px;
+
 @mixin medium-screen {
     @media (min-width: rem($medium-screen)) and (max-width: rem($small-screen - 1)) {
         @content;
@@ -25,18 +30,21 @@ $video-detail-border-color: #E1E1E1;
         @content;
     }
 }
+
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: $navbar-background-color;
-    padding: 20px;
+    padding: 1.25rem;
+    
 
     &__left {
         display: flex;
         align-items: center;
         justify-content: flex-start;
         flex: 1;    
+        margin-left: 5rem;
     }
 
     &__middle {
@@ -51,7 +59,7 @@ $video-detail-border-color: #E1E1E1;
         height: 50px;
         width: 50px;
         border-radius: 50%;
-        margin-left: 10px;
+        margin-left: 0.625rem;
     }
 
     &__right {
@@ -59,21 +67,21 @@ $video-detail-border-color: #E1E1E1;
         align-items: center;
         justify-content: flex-start;
         flex: 0.5;
-        padding-right: 80px; // Added padding to the right
+        padding-right: 5rem;
     }
 
     &__logo {
-        margin-right: 30px;
+        margin-right: 1.875rem;
     }
 
     &__search {
         height: 40px;
         width: 250px;
-        padding-left: 40px;
+        padding-left: 2.5rem;
         background-image: url('../../assets/Icons/search.svg');
         background-repeat: no-repeat;
-        background-position: 10px center;
-        margin-right: 30px;
+        background-position: 0.625rem center;
+        margin-right: 1.875rem;
         background-color: $search-background-color;
         border: 1px solid $border-color;
         border-radius: 4px;
@@ -84,7 +92,7 @@ $video-detail-border-color: #E1E1E1;
     &__upload {
         height: 40px;
         min-width: 150px;
-        padding: 0 32px;
+        padding: 0 2rem;
         border-radius: 4px;
         background-color: $upload-background-color;
         color: $upload-color;
@@ -94,13 +102,13 @@ $video-detail-border-color: #E1E1E1;
         justify-content: center;
         background-image: url('../../assets/Icons/upload.svg');
         background-repeat: no-repeat;
-        background-position: 10px center;
-        margin-right: 15px;
+        background-position: 0.625rem center;
+        margin-right: 0.938rem;
 
         svg {
             fill: $upload-color;
             height: 100%;
-            margin-right: 10px;
+            margin-right: 0.625rem;
         }
     }
 
@@ -108,10 +116,9 @@ $video-detail-border-color: #E1E1E1;
         height: 50px;
         width: 50px;
         border-radius: 50%;
-        margin-left: 10px;
+        margin-left: 0.625rem;
     }
 
-    // Tablet devices
     @media screen and (min-width: 768px) and (max-width: 1279px) {
         &__search {
             width: 200px;
@@ -127,38 +134,42 @@ $video-detail-border-color: #E1E1E1;
         }
 
         &__right {
-            padding-right: 0; // Reset padding for tablet devices
+            padding-right: 0;
         }
     }
 
     @media screen and (max-width: 767px) {
+        &__left {
+            margin-left: 0;
+        }
+
         flex-direction: column;
-        padding: 0 10px; // Adjusted padding
+        padding: 0 0.625rem;
 
         &__left,
         &__middle,
         &__right {
             flex-direction: row;
             justify-content: center;
-            margin-bottom: 10px;
-            width: 100%; // Adjusted to take full width
+            margin-bottom: 0.625rem;
+            width: 100%;
         }
 
         &__logo {
-            margin-right: 10px;
+            margin-right: 0.625rem;
         }
 
         &__search {
-            width: 90%; // Adjusted to take 90% of the width, matching the upload button
+            width: 90%;
             margin-right: 0;
-            margin-left: 5%; // Added to center align
+            margin-left: 5%;
         }
 
         &__upload {
             min-width: 100px;
-            width: 90%; // Adjusted to take 90% of the width
-            margin-left: 5%; // Center the button with 5% margin on left
-            margin-right: 5%; // Center the button with 5% margin on right
+            width: 90%;
+            margin-left: 5%;
+            margin-right: 5%;
         }
 
         &__avatar {
@@ -169,12 +180,11 @@ $video-detail-border-color: #E1E1E1;
 
         &__middle-avatar {
             display: block;
-            margin-left: 10px;
-            /* This is the margin you want to add */
+            margin-left: 0.625rem;
         }
 
         &__right {
-            padding-right: 0; // Reset padding for mobile devices
+            padding-right: 0;
         }
     }
 

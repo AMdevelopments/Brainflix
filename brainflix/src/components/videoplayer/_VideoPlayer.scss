@@ -1,4 +1,5 @@
 // _VideoPlayer.scss
+
 $border-color: #AFAFAF;
 $background-color-light: #E1E1E1;
 $navbar-background-color: white;
@@ -7,6 +8,11 @@ $upload-background-color: #0095FF;
 $upload-color: white;
 $title-and-channel-color: #323232;
 $video-detail-border-color: #E1E1E1;
+
+$medium-screen: 768px;
+$small-screen: 767px;
+$desktop-screen: 1280px;
+
 @mixin medium-screen {
     @media (min-width: rem($medium-screen)) and (max-width: rem($small-screen - 1)) {
         @content;
@@ -45,6 +51,16 @@ $video-detail-border-color: #E1E1E1;
     height: 80vh;
     width: 100%;
     overflow: hidden;
+
+    @include medium-screen {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+  
+    @include small-screen {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
 }
 
 .video-player__video {
@@ -73,6 +89,7 @@ $video-detail-border-color: #E1E1E1;
     width: 80%;
     padding: 0 0.625rem;
 }
+
 
 
 
