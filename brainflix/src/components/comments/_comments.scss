@@ -1,4 +1,5 @@
 // _comments.scss
+
 $border-color: #AFAFAF;
 $background-color-light: #E1E1E1;
 $navbar-background-color: white;
@@ -7,73 +8,106 @@ $upload-background-color: #0095FF;
 $upload-color: white;
 $title-and-channel-color: #323232;
 $video-detail-border-color: #E1E1E1;
-@mixin medium-screen {
-    @media (min-width: rem($medium-screen)) and (max-width: rem($small-screen - 1)) {
-        @content;
-    }
-}
+$new-comment-bg-color: #FAFAFA;
+$comment-button-bg-color: #0095FF;
+$comment-button-color: white;
 
-@mixin small-screen {
-    @media (max-width: rem($small-screen)) {
-        @content;
-    }
-}
-
-@mixin desktop-screen {
-    @media (min-width: rem($desktop-screen)) {
-        @content;
-    }
-}
-
-.comment {
-    border-bottom: 1px solid $border-color;
-    padding-bottom: 0.625rem; // Changed to rem
-    margin-bottom: 0.625rem; // Changed to rem
-    display: flex;
-    align-items: flex-start;
-
-    .avatar {
-        height: 50px;
-        width: 50px;
-        border-radius: 50%;
-        background-color: $background-color-light;
-        margin-right: 0.625rem; // Changed to rem
-        flex-shrink: 0;
-        margin-top: 1.25rem; // Changed to rem
+.comments {
+    &__title {
+        font-size: 1em;
+        color: #323232;
+        margin-bottom: 1em;
     }
 
-    .comment__content {
+    .new-comment-section {
         display: flex;
-        flex-direction: column;
-        margin-right: 1.5rem; // Changed to rem
+        align-items: center;
+        padding: 1rem 0;
+        border-bottom: 1px solid $border-color;
 
-        p {
-            margin-bottom: 0;
+        &__avatar {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            background-color: $background-color-light;
+            margin-right: 1.5rem;
+            background-image: url('../../assets/Images/Mohan-muruge.jpg');
+            background-size: cover;
         }
 
-        .comment__header {
+        &__bar {
+            flex-grow: 1;
+            background-color: $new-comment-bg-color;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            padding: 1rem;
+            border-radius: 4px;
         }
 
-        .comment__text {
-            margin-top: -0.625rem; // Changed to rem
+        &__bar-input {
+            flex-grow: 1;
+            border: none;
+            background-color: transparent;
         }
-    }   
 
-    @media only screen and (min-width: 768px) and (max-width: 1279px) {
-        width: 100%;
-        padding: 0;
-        margin: 0;
+        &__bar-button {
+            background-color: $comment-button-bg-color;
+            border: none;
+            color: $comment-button-color;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            margin-left: 1rem;
+            height: 40px;
+            width: 150px;
+
+            img {
+                margin-right: 0.5rem;
+            }
+        }
     }
 
-    @media (max-width: 767px) {
-        width: 100%;  
-        padding: 0;  
-        margin: 0;  
+    .comment {
+        border-bottom: 1px solid $border-color;
+        padding-bottom: 0.625rem;
+        margin-bottom: 0.625rem;
+        display: flex;
+        align-items: flex-start;
+
+        .avatar {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            background-color: $background-color-light;
+            margin-right: 0.625rem;
+            flex-shrink: 0;
+            margin-top: 1.25rem;
+        }
+
+        .comment__content {
+            display: flex;
+            flex-direction: column;
+            margin-right: 1.5rem;
+
+            p {
+                margin-bottom: 0;
+            }
+
+            .comment__header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .comment__text {
+                margin-top: -0.625rem;
+            }
+        }   
     }
 }
+
+
 
 
 

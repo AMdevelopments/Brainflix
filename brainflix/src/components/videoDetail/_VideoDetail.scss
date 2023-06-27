@@ -1,5 +1,3 @@
-
-// _VideoDetail.scss
 $border-color: #AFAFAF;
 $background-color-light: #E1E1E1;
 $navbar-background-color: white;
@@ -8,6 +6,7 @@ $upload-background-color: #0095FF;
 $upload-color: white;
 $title-and-channel-color: #323232;
 $video-detail-border-color: #E1E1E1;
+
 @mixin medium-screen {
     @media (min-width: rem($medium-screen)) and (max-width: rem($small-screen - 1)) {
         @content;
@@ -26,12 +25,10 @@ $video-detail-border-color: #E1E1E1;
     }
 }
 
-
-
 .video-detail {
     max-width: 900px;
     margin: 0 auto;
-    
+
     &__title {
         font-size: 2rem;
         margin-bottom: 0.3125rem;
@@ -46,13 +43,16 @@ $video-detail-border-color: #E1E1E1;
         border-bottom: 4px solid $video-detail-border-color;
 
         &__channel {
+            flex-shrink: 0;
             font-weight: bold;
             color: $title-and-channel-color;
+            margin-right: 10px; // Adjust this value as needed
         }
 
         &__data {
             display: flex;
             align-items: center;
+            justify-content: space-between;
 
             .icon-text {
                 display: flex;
@@ -88,7 +88,6 @@ $video-detail-border-color: #E1E1E1;
         margin: 1.25rem 0;
     }
 
-    // Media query for smaller screens
     @media (max-width: 767px) {
         width: 100%;  
         padding: 0 1rem;  

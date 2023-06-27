@@ -33,6 +33,35 @@ body {
   }
 }
 
+.video-detail__info {
+  display: flex;
+}
+
+.video-detail__date {
+  flex-grow: 1;
+}
+
+.video-detail__data {
+  display: flex;
+  justify-content: space-between;
+}
+
+.video-detail__channel {
+  margin-right: 10px;
+}
+
+.views-icon-text, .likes-icon-text {
+  display: flex;
+  align-items: right;
+  justify-content: flex-end;
+}
+
+@media (max-width: 767px) {
+  .views-icon-text, .likes-icon-text {
+    flex-basis: 100%;
+    margin-bottom: 1rem;
+  }
+}
 .app__main {
   width: 70%;
   padding-left: 24px;
@@ -51,4 +80,4 @@ body {
   .app__sidebar {
     padding-right: 16px;
   }
-}/*# sourceMappingURL=app.css.map */
+}/*# sourceMappingURL=App.css.map */
