@@ -6,7 +6,23 @@ $color-input-border: #AFAFAF;
 $color-input-text: #323232;
 $color-action-primary: #0095FF;
 $color-white: white;
+@mixin medium-screen {
+  @media (min-width: rem($medium-screen)) and (max-width: rem($small-screen - 1)) {
+      @content;
+  }
+}
 
+@mixin small-screen {
+  @media (max-width: rem($small-screen)) {
+      @content;
+  }
+}
+
+@mixin desktop-screen {
+  @media (min-width: rem($desktop-screen)) {
+      @content;
+  }
+}
 // Convert pixel to REM
 @function px-to-rem($size) {
   @return $size / 16 * 1rem;
