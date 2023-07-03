@@ -38,7 +38,10 @@ $desktop-screen: 1280px;
     background-color: $navbar-background-color;
     padding: 1.25rem;
     
-
+    // Add this line
+    &--upload-page {
+        border-bottom: 1px solid $border-color;
+    }
     &__left {
         display: flex;
         align-items: center;
@@ -166,10 +169,10 @@ $desktop-screen: 1280px;
         }
 
         &__upload {
-            min-width: 100px;
-            width: 90%;
-            margin-left: 5%;
-            margin-right: 5%;
+            width: 400px;
+            margin-left: 10%;
+           max-width: 70%;
+            
         }
 
         &__avatar {

@@ -7,6 +7,10 @@ import viewsIcon from '../../assets/Icons/views.svg';
 import likesIcon from '../../assets/Icons/likes.svg';
 
 const VideoDetail = ({ video }) => {
+    if (!video) {
+        return <div>Loading...</div>;
+    }
+    
     const date = new Date(video.timestamp).toLocaleDateString();
 
     return (
@@ -36,6 +40,7 @@ const VideoDetail = ({ video }) => {
 };
 
 export default VideoDetail;
+
 
 
 

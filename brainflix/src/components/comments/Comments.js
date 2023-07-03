@@ -5,6 +5,12 @@ import addCommentIcon from '../../assets/Icons/add_comment.svg';
 import avatar from '../../assets/Images/Mohan-muruge.jpg';
 
 const Comments = ({ comments }) => {
+    // Check if comments is undefined
+    if (!comments) {
+        return <div>Loading comments...</div>; // or return null or an error message
+    }
+
+    // The rest of your component code...
     return (
         <div className="comments">
             <h2 className="comments__title">{comments.length} Comments</h2>
@@ -36,6 +42,7 @@ const Comments = ({ comments }) => {
 };
 
 export default Comments;
+
 
 
 

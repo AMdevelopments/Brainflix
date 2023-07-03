@@ -52,6 +52,11 @@ $video-detail-border-color: #E1E1E1;
         border-left: none;
     }
 }
+.video__thumbnail .video__thumbnail-info a {
+    text-decoration: none;
+    color: inherit;
+}
+
 
 .video__thumbnail {
     display: flex;
@@ -67,18 +72,25 @@ $video-detail-border-color: #E1E1E1;
     margin-right: 0.9375rem;
 }
 
+.video__thumbnail a {
+    text-decoration: none !important;
+    color: inherit;
+}
+
 .video__thumbnail-info {
     display: flex;
     flex-direction: column;
     justify-content: center;
 
     h2 {
+        color: $title-and-channel-color;
         font-size: 0.875rem;
         font-weight: 700;
         margin-bottom: 0.3125rem;
     }
 
     h3 {
+        color: $title-and-channel-color;
         font-size: 0.875rem;
         font-weight: 300;
     }

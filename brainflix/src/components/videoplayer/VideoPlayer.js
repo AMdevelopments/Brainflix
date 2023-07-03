@@ -3,6 +3,10 @@ import React from 'react';
 import './_VideoPlayer.scss'; 
 
 const VideoPlayer = ({ video }) => {
+    if (!video) {
+        return <div>Loading...</div>;
+    }
+    
     return (
         <div className="video-player">
             <video 
@@ -18,6 +22,7 @@ const VideoPlayer = ({ video }) => {
 };
 
 export default VideoPlayer;
+
 
 
 
