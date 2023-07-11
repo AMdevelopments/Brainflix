@@ -1,4 +1,5 @@
 // App.js
+// App.js
 import React, { useState, useEffect } from 'react';
 import './app.scss';
 import Nav from './components/nav/Nav';
@@ -59,7 +60,7 @@ const App = () => {
             <Router>
                 <Nav />
                 <Routes>
-                    <Route path="/" element={<Navigate to={`/videos/${videos[0].id}`} />} />
+                    <Route path="/" element={videos.length > 0 ? <Navigate to={`/videos/${videos[0].id}`} /> : <div>Loading...</div>} />
                     <Route path="/upload" element={<Upload onVideoUpload={handleVideoUpload} />} />
                     <Route path="/videos/:id" element={<VideoPage videos={videos} />} />
                 </Routes>
@@ -69,6 +70,7 @@ const App = () => {
 }
 
 export default App;
+
 
 
 
