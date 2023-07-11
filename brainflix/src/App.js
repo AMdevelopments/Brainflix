@@ -1,5 +1,4 @@
 // App.js
-// App.js
 import React, { useState, useEffect } from 'react';
 import './app.scss';
 import Nav from './components/nav/Nav';

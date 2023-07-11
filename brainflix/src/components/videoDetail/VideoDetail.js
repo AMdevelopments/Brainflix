@@ -1,4 +1,6 @@
 // VideoDetail.js
+// VideoDetail.js
+
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Comments from '../comments/Comments';
@@ -27,9 +29,7 @@ const VideoDetail = () => {
         return <div>Loading...</div>;
     }
 
-    console.log(video.timestamp);
-const date = new Date(Date.parse(video.timestamp)).toLocaleDateString("en-US");
-
+    const date = new Date(video.timestamp).toLocaleDateString("en-US");  // Changes made here
 
     return (
         <div className="video-detail">
@@ -58,6 +58,8 @@ const date = new Date(Date.parse(video.timestamp)).toLocaleDateString("en-US");
 };
 
 export default VideoDetail;
+
+
 
 
 
