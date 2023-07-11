@@ -1,17 +1,35 @@
 // VideoDetail.js
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Comments from '../comments/Comments';
-
 
 import viewsIcon from '../../assets/Icons/views.svg';
 import likesIcon from '../../assets/Icons/likes.svg';
 
-const VideoDetail = ({ video }) => {
+const VideoDetail = () => {
+    const [video, setVideo] = useState(null);
+    const { id } = useParams();
+
+    useEffect(() => {
+        const fetchVideo = async () => {
+            try {
+                const response = await fetch(`http://localhost:5001/videos/${id}`);
+                const data = await response.json();
+                setVideo(data);
+            } catch (error) {
+                console.error(`Error fetching video: ${error}`);
+            }
+        };
+        fetchVideo();
+    }, [id]);
+
     if (!video) {
         return <div>Loading...</div>;
     }
-    
-    const date = new Date(video.timestamp).toLocaleDateString();
+
+    console.log(video.timestamp);
+const date = new Date(Date.parse(video.timestamp)).toLocaleDateString("en-US");
+
 
     return (
         <div className="video-detail">
@@ -40,6 +58,8 @@ const VideoDetail = ({ video }) => {
 };
 
 export default VideoDetail;
+
+
 
 
 

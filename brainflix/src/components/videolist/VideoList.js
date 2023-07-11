@@ -3,11 +3,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './_VideoList.scss';
 
-const VideoList = ({ videos }) => {
+const VideoList = ({ videos, currentVideoId }) => {
+    // Check if videos is defined
+    if (!videos) {
+        return <div>Loading...</div>; // Or return null or some other JSX here
+    }
+
     return (
         <div className="video-list">
             <h1 className="video-list__title">NEXT VIDEOS</h1>
-            {videos.map(video => (
+            {videos.filter(video => video.id !== currentVideoId).map(video => (
                 <Link to={`/videos/${video.id}`} key={video.id} style={{ textDecoration: 'none' }}>
                     <div className="video__thumbnail">
                         <img src={video.image} alt={video.title} />
@@ -23,6 +28,7 @@ const VideoList = ({ videos }) => {
 };
 
 export default VideoList;
+
 
 
 

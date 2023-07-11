@@ -7,23 +7,6 @@ $upload-background-color: #0095FF;
 $upload-color: white;
 $title-and-channel-color: #323232;
 $video-detail-border-color: #E1E1E1;
-@mixin medium-screen {
-    @media (min-width: rem($medium-screen)) and (max-width: rem($small-screen - 1)) {
-        @content;
-    }
-}
-
-@mixin small-screen {
-    @media (max-width: rem($small-screen)) {
-        @content;
-    }
-}
-
-@mixin desktop-screen {
-    @media (min-width: rem($desktop-screen)) {
-        @content;
-    }
-}
 
 .video-list {
     display: flex;
@@ -46,17 +29,16 @@ $video-detail-border-color: #E1E1E1;
     }
 
     @media (max-width: 767px) {
-        width: 100%;  
-        padding: 0 1rem;  
-        margin-top: 1.25rem;
+        width: 100%;
+        padding: 0 1rem;
         border-left: none;
     }
 }
+
 .video__thumbnail .video__thumbnail-info a {
     text-decoration: none;
     color: inherit;
 }
-
 
 .video__thumbnail {
     display: flex;
@@ -95,3 +77,5 @@ $video-detail-border-color: #E1E1E1;
         font-weight: 300;
     }
 }
+
+

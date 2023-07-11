@@ -1,0 +1,49 @@
+// _VideoPage.scss
+.video-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .video-player {
+        width: 100%;
+    }
+  
+    &__content {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1rem;
+
+        @media (max-width: 1279px) {  // Adjust for tablet and mobile
+            flex-direction: column;
+        }
+    }
+
+    .video-page__main {
+        flex: 6;  // give more space to the video details and comments
+        padding-right: 16px;
+
+        @media (min-width: 1280px) { // for desktop screen
+            margin-left: 2rem; //adjust as needed
+        }
+
+        @media (max-width: 1279px) {  // Adjust for tablet and mobile
+            padding-right: 0;
+        }
+    }
+
+    .video-page__sidebar {
+        flex: 2;
+        padding-left: 16px;
+
+        @media (min-width: 1280px) { // for desktop screen
+            margin-right: 2rem; //adjust as needed
+        }
+
+        @media (max-width: 1279px) {  // Adjust for tablet and mobile
+            padding-left: 0;
+        }
+    }
+}
+
+
+  

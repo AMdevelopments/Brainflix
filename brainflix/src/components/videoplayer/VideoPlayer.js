@@ -1,12 +1,27 @@
 // VideoPlayer.js
-import React from 'react';
-import './_VideoPlayer.scss'; 
+import React, { useEffect, useState } from 'react';
+import './_VideoPlayer.scss';
 
-const VideoPlayer = ({ video }) => {
+const VideoPlayer = ({ videoId }) => {
+    const [video, setVideo] = useState(null);
+
+    useEffect(() => {
+        const fetchVideo = async () => {
+            try {
+                const response = await fetch(`http://localhost:5001/videos/${videoId}`);
+                const data = await response.json();
+                setVideo(data);
+            } catch (error) {
+                console.error(`Error fetching video: ${error}`);
+            }
+        };
+        fetchVideo();
+    }, [videoId]);
+
     if (!video) {
         return <div>Loading...</div>;
     }
-    
+
     return (
         <div className="video-player">
             <video 
@@ -22,6 +37,9 @@ const VideoPlayer = ({ video }) => {
 };
 
 export default VideoPlayer;
+
+
+
 
 
 

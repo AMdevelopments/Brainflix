@@ -1,3 +1,4 @@
+//_upload.scss
 // Define Sass variables
 $color-divider: #E1E1E1;
 $color-text-muted: #E1E1E1;
@@ -35,6 +36,7 @@ $color-white: white;
 }
 
 .upload {
+  padding: 0 5rem; // New line added to align with navbar content
   &__title {
     font-size: px-to-rem(33);
   }

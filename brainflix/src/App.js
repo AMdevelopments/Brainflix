@@ -1,111 +1,100 @@
 // App.js
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, useParams } from 'react-router-dom';
-import axios from 'axios';
 import './app.scss';
-
 import Nav from './components/nav/Nav';
-import VideoPlayer from './components/videoplayer/VideoPlayer';
-import VideoDetail from './components/videoDetail/VideoDetail';
-import VideoList from './components/videolist/VideoList';
 import Upload from './pages/upload/Upload';
-
-const API_KEY = '1813bc17-ecb7-47bc-af56-b8c21216a030';
+import VideoPage from './pages/videoPage/VideoPage';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
 
 const App = () => {
-    const [allVideos, setAllVideos] = useState([]);
-    const [currentVideo, setCurrentVideo] = useState(null);
-    const [error, setError] = useState(null); // new error state
-
-    const fetchVideoDetails = async (videoId) => {
-        try {
-            const response = await axios.get(`https://project-2-api.herokuapp.com/videos/${videoId}?api_key=${API_KEY}`);
-            return response.data;
-        } catch (error) {
-            setError('Error fetching video details'); // set error state
-            console.error('Error fetching video details:', error);
-        }
-    };
+    const [videos, setVideos] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        const fetchVideos = async () => {
-            try {
-                const response = await axios.get(`https://project-2-api.herokuapp.com/videos?api_key=${API_KEY}`);
-                setAllVideos(response.data);
-                const firstVideo = await fetchVideoDetails(response.data[0].id);
-                setCurrentVideo(firstVideo);
-            } catch (error) {
-                setError('Error fetching videos'); // set error state
-                console.error('Error fetching videos:', error);
-            }
-        };
-
         fetchVideos();
     }, []);
 
-    const VideoWithDetails = () => {
-        const { videoId } = useParams();
-        const [video, setVideo] = useState(null);
-        const videos = allVideos.filter(v => v.id !== videoId);
-
-        useEffect(() => {
-            const fetchData = async () => {
-                const videoDetails = await fetchVideoDetails(videoId);
-                setVideo(videoDetails);
-            };
-            fetchData();
-        }, [videoId]);
-
-        if (!video) return <div>Loading...</div>;
-
-        return (
-            <>
-                <VideoPlayer video={video} />
-                <div className="app__content">
-                    <div className="app__main">
-                        <VideoDetail video={video} />
-                    </div>
-                    <div className="app__sidebar">
-                        <VideoList videos={videos} />
-                    </div>
-                </div>
-            </>
-        );
+    const fetchVideos = async () => {
+        try {
+            const response = await fetch('http://localhost:5001/videos');
+            const data = await response.json();
+            console.log("Fetched videos: ", data); 
+            setVideos(data);
+            setIsLoading(false);
+        } catch (error) {
+            console.error(`Error fetching videos: ${error}`);
+            setIsLoading(false);  
+        }
     };
 
-    if (error) return <div>{error}</div>; // if there's an error, render it
+    const handleVideoUpload = (title, description, image, navigate) => {
+        const newVideo = {
+            id: uuidv4(),
+            title,
+            description,
+            image,
+            views: 0,
+            likes: 0,
+            comments: []
+        };
 
-    if (!currentVideo) return <div>Loading...</div>;
+        axios.post('http://localhost:5001/videos', newVideo)
+            .then(() => {
+                fetchVideos().then(() => {
+                    alert('Video uploaded!');
+                    navigate('/');
+                });
+            })
+            .catch(err => console.error(err));
+    };
 
-    const videos = allVideos.filter(video => video.id !== currentVideo.id);
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
 
     return (
-        <Router>
-            <Nav />
-            <div className="app">
+        <div className="app">
+            <Router>
+                <Nav />
                 <Routes>
-                    <Route path="/" element={
-                        <>
-                            <VideoPlayer video={currentVideo} />
-                            <div className="app__content">
-                                <div className="app__main">
-                                    <VideoDetail video={currentVideo} />
-                                </div>
-                                <div className="app__sidebar">
-                                    <VideoList videos={videos} />
-                                </div>
-                            </div>
-                        </>
-                    }/>
-                    <Route path="/videos/:videoId" element={<VideoWithDetails />} />
-                    <Route path="/upload" element={<div className="main-container"><Upload /></div>} />
+                    <Route path="/" element={<Navigate to={`/videos/${videos[0].id}`} />} />
+                    <Route path="/upload" element={<Upload onVideoUpload={handleVideoUpload} />} />
+                    <Route path="/videos/:id" element={<VideoPage videos={videos} />} />
                 </Routes>
-            </div>
-        </Router>
+            </Router>
+        </div>
     );
-};
+}
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
